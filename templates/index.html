@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0">
+        <title>Wake</title>
+        <link rel="stylesheet" type="text/css" href="static/style.css" />
+    </head>
+    <body>
+        <div class="main">
+            <p>On</p>
+            <select id="days">
+                <option value="off">No days</option>
+                <option value="week" selected>Weekdays</option>
+                <option value="all">All days</option>
+            </select>
+            <p>at</p>
+            <select id="time">
+                <option value="6:30">6:30</option>
+                <option value="6:45">6:45</option>
+                <option value="7:00">7:00</option>
+                <option value="7:15">7:15</option>
+                <option value="7:45">7:45</option>
+                <option value="8:00">8:00</option>
+                <option value="8:15">8:15</option>
+                <option value="17:30">17:30</option>
+            </select>
+            <p>for</p>
+            <select id="duration">
+                <option value=15>15 minutes</option>
+                <option value=30>30 minutes</option>
+                <option value=45>45 minutes</option>
+                <option value=60>60 minutes</option>
+            </select>
+            <button class="" onclick="submit()">Update</button>
+	    <p id="msg"></p>
+        </div>
+        <script src="static/main.js"></script>
+    </body>
+</html>
