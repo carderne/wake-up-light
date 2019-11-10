@@ -5,12 +5,11 @@ import sys
 
 import RPi.GPIO as GPIO
 
-GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 
-red_pin = 2
-green_pin = 3
-blue_pin = 4
+red_pin = 22
+green_pin = 23
+blue_pin = 24
 
 GPIO.setup(red_pin, GPIO.OUT)
 GPIO.setup(green_pin, GPIO.OUT)
@@ -28,6 +27,7 @@ blue.start(100)
 duration = int(sys.argv[1])
 sleep = 60 * duration / 100
 try:
+    pass
     for x in range(101):
         time.sleep(sleep)
         red.ChangeDutyCycle(100-x)
