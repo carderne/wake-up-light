@@ -1,6 +1,6 @@
 const url = "/api/update";
 
-async function submit() {
+async function update() {
   let days = document.getElementById("days").value;
   let time = document.getElementById("time").value;
   let duration = document.getElementById("duration").value;

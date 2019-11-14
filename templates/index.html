@@ -10,29 +10,28 @@
         <div class="main">
             <p>On</p>
             <select id="days">
-                <option value="off">No days</option>
-                <option value="week" selected>Weekdays</option>
-                <option value="all">All days</option>
+		<option value="off" {% if days == "off" %}selected{% endif %}>No days</option>
+                <option value="week" {% if days == "week" %}selected{% endif %}>Weekdays</option>
+                <option value="all" {% if days == "all" %}selected{% endif %}>All days</option>
             </select>
             <p>at</p>
             <select id="time">
-                <option value="6:30">6:30</option>
-                <option value="6:45">6:45</option>
-                <option value="7:00">7:00</option>
-                <option value="7:15">7:15</option>
-                <option value="7:45">7:45</option>
-                <option value="8:00">8:00</option>
-                <option value="8:15">8:15</option>
-                <option value="8:30">17:55</option>
+                <option value="6:45" {% if time == "6:45" %}selected{% endif %}>6:45</option>
+		<option value="7:00" {% if time == "7:00" %}selected{% endif %}>7:00</option>
+                <option value="7:15" {% if time == "7:15" %}selected{% endif %}>7:15</option>
+                <option value="7:30" {% if time == "7:30" %}selected{% endif %}>7:30</option>
+                <option value="7:45" {% if time == "7:45" %}selected{% endif %}>7:45</option>
+                <option value="8:00" {% if time == "8:00" %}selected{% endif %}>8:00</option>
+                <option value="8:15" {% if time == "8:15" %}selected{% endif %}>8:15</option>
             </select>
             <p>for</p>
             <select id="duration">
-                <option value=15>15 minutes</option>
-                <option value=30>30 minutes</option>
-                <option value=45>45 minutes</option>
-                <option value=60>60 minutes</option>
+                <option value=15 {% if duration == "15" %}selected{% endif %}>15 minutes</option>
+                <option value=30 {% if duration == "30" %}selected{% endif %}>30 minutes</option>
+                <option value=45 {% if duration == "45" %}selected{% endif %}>45 minutes</option>
+                <option value=60 {% if duration == "60" %}selected{% endif %}>60 minutes</option>
             </select>
-            <button class="" onclick="submit()">Update</button>
+            <button onclick="update()">Update</button>
 	    <p id="msg"></p>
         </div>
         <script src="static/main.js"></script>
