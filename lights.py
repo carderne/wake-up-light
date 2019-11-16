@@ -12,7 +12,8 @@ for pin in pins.values():
     pi.set_PWM_frequency(pin, 200)
 
 
-def wake(wait):
+def wake(duration):
+    wait = 60 * duration / 100
     for x in range(101):
         pi.set_PWM_dutycycle(pins["red"], 2.55 * (x))
         if x > 33:
@@ -23,26 +24,29 @@ def wake(wait):
     time.sleep(15 * 60)
 
 
-def sleep(wait):
+def sleep(duration):
+    wait = 60 * duration / 100
     for x in range(101):
         pi.set_PWM_dutycycle(pins["red"], 2.55 * (100 - x))
         pi.set_PWM_dutycycle(pins["green"], 2.55 * (50 - 0.5 * x))
         time.sleep(wait)
 
 
+def cleanup():
+    for pin in pins.values():
+        pi.set_PWM_dutycycle(pin, 0)
+    pi.stop()
+
+
 if __name__ == "__main__":
     func = sys.argv[1]
     duration = float(sys.argv[2])
-    wait = 60 * duration / 100
     try:
         if func == "wake":
-            wake(wait)
+            wake(duration)
         else:
-            sleep(wait)
+            sleep(duration)
     except KeyboardInterrupt:
         pass
-
     finally:
-        for pin in pins.values():
-            pi.set_PWM_dutycycle(pin, 0)
-        pi.stop()
+        cleanup()

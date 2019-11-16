@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-# from subprocess import run
 import os
 import json
 
