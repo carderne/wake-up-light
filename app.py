@@ -39,7 +39,8 @@ def update():
     cron.remove_all(comment="wake")
     if days != "off":
         job = cron.new(
-            command=f"/home/pi/wake-up-light/lights.py wake {duration}", comment="wake"
+            command=f"/home/pi/wake-up-light/lights.py sunrise {duration}",
+            comment="wake",
         )
         job.minute.on(minute)
         job.hour.on(hour)

@@ -4,12 +4,12 @@ import time
 
 import RPi.GPIO as GPIO
 
-import lights
+from lights import sunset
 
 
 def button_callback(channel):
     print("Button pushed")
-    lights.sleep(45)
+    sunset(45)
 
 
 def setup_listener():
