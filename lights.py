@@ -9,26 +9,26 @@ pi = pigpio.pi()
 
 pins = {"red": 5, "green": 6, "blue": 13}
 for pin in pins.values():
-    pi.set_PWM_frequency(pin, 200)
+    pi.set_PWM_frequency(pin, 390)
 
 
-def wake(duration):
-    wait = 60 * duration / 100
-    for x in range(101):
-        pi.set_PWM_dutycycle(pins["red"], 2.55 * (x))
-        if x > 33:
-            pi.set_PWM_dutycycle(pins["green"], 2.55 * (1.5 * x - 50))
-        if x > 66:
-            pi.set_PWM_dutycycle(pins["blue"], 2.55 * (3 * x - 200))
+def sunrise(duration):
+    wait = 60 * duration / 765
+    for x in range(766):
+        pi.set_PWM_dutycycle(pins["red"], x / 3)
+        if x > 255:
+            pi.set_PWM_dutycycle(pins["green"], x / 2 - 127.5)
+        if x > 510:
+            pi.set_PWM_dutycycle(pins["blue"], x - 510)
         time.sleep(wait)
     time.sleep(15 * 60)
 
 
-def sleep(duration):
-    wait = 60 * duration / 100
-    for x in range(101):
-        pi.set_PWM_dutycycle(pins["red"], 2.55 * (100 - x))
-        pi.set_PWM_dutycycle(pins["green"], 2.55 * (50 - 0.5 * x))
+def sunset(duration):
+    wait = 60 * duration / 765
+    for x in range(765, -1, -1):
+        pi.set_PWM_dutycycle(pins["red"], x / 3)
+        pi.set_PWM_dutycycle(pins["green"], 0.3 * x / 3)
         time.sleep(wait)
 
 
@@ -42,10 +42,10 @@ if __name__ == "__main__":
     func = sys.argv[1]
     duration = float(sys.argv[2])
     try:
-        if func == "wake":
-            wake(duration)
+        if func == "sunrise":
+            sunrise(duration)
         else:
-            sleep(duration)
+            sunset(duration)
     except KeyboardInterrupt:
         pass
     finally:
