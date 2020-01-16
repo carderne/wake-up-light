@@ -4,7 +4,7 @@ import time
 
 import RPi.GPIO as GPIO
 
-from lights import sunset
+from lights import sunset, cleanup
 
 
 def button_callback(channel):
@@ -29,4 +29,4 @@ if __name__ == "__main__":
         pass
     finally:
         GPIO.cleanup()
-        lights.cleanup()
+        cleanup()
