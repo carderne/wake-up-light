@@ -1,0 +1,4 @@
+Flask==1.1.2
+python-crontab==2.5.1
+RPi.GPIO==0.7.0
+pigpio==1.78
